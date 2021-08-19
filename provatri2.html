@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/shoppingcart.jpg" type="image/x-icon">
+    <title>Calçados Brasil | Registro de Produtos</title>
+</head>
+<header>
+    <img id="logo" src="./img/CALÇADOS_BRASIL_transparente.png">
+
+</header>
+<body>
+    <h1> Bem-vindo ao registro de compras! </h1>
+
+    <fieldset>
+        <legend> Informe os detalhes do produto </legend>
+
+        <input type="text" id="nome" placeholder=" Nome e Marca do Produto ">
+
+        <input type="text" id="tamanho" placeholder=" Tamanho do Produto ">
+ 
+        <button type="button" id="registro">  Efetuar Registro </button>
+    </fieldset>
+
+    <fieldset>
+        <legend> Registros </legend>
+        <div id="lsOutput">
+
+        </div>
+
+    </fieldset>
+</body>
+
+<script>
+    const Nome = document.getElementById('nome')
+    const Tamanho = document.getElementById('tamanho')
+    const Botao = document.getElementById('registro')
+    const lsOutput = document.getElementById('lsOutput')
+
+    Botao.onclick = function () {
+
+        const key = Nome.value 
+        const value = Tamanho.value
+        
+
+        if (key && value) {
+            localStorage.setItem (key,value);
+            location.reload();
+        }
+        
+    };
+
+    for (let i = 0; i < localStorage.length; i++) {
+
+        const key = localStorage.key(i);
+
+        const value = localStorage.getItem(key);
+
+        lsOutput.innerHTML += `${key}: ${value}<br />`;
+
+    }
+</script>
+<style>
+    header{
+    background-color: blueviolet;
+    margin:0px;
+    padding:0px ;
+}
+
+body {
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+fieldset{
+    padding: 100px;
+    border: 2px solid black;
+}
+
+input {
+    padding: 15px;
+    border: 5px thin black;
+}
+
+button {
+    padding: 10px;
+    border: 5px solid black;
+    color: white;
+    font: bold;
+    background-color: blueviolet;
+}
+
+</style>
+</html>
